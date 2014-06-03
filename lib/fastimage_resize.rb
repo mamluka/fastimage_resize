@@ -65,7 +65,7 @@ class FastImage
     if input.respond_to?(:read)
       file_in = read_to_local(input)
     else
-      u = URI.parse(input)
+      u = URI.parse(input.gsub(' ','+'))
       if u.scheme == "http" || u.scheme == "https" || u.scheme == "ftp"
         file_in = read_to_local(open(u))
       else
